@@ -1,26 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void merge_self(int a[],int l,int mid,int r ){
-
-    int i=l,j=mid+1,k=0;
-    int temp[r-l+1];
-
-    while(i<=mid || j<=r){
-
-        if(j>r ||  (i<=mid && a[i]<=a[j])){
-            temp[k++]=a[i++];
-        }else{
-            temp[k++]=a[j++];
-        }
-
-    }
-
-    for(int s=l;s<=r;s++){
-        a[s]=temp[s-l];
-    }
-
-}
 
 
 void mergesort(int arr[],int l,int r){
