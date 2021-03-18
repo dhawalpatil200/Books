@@ -1,32 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void merge(int arr[],int l, int m, int r){
+void merge_self(int a[],int l,int mid,int r ){
 
-    int i=l;
-    int j=m+1;
-    int k=l;
-
+    int i=l,j=mid+1,k=0;
     int temp[r-l+1];
 
-    while(i<=m && j<=r){
-        if(arr[i]<=arr[j])
-            temp[k++]=arr[i++];
-            
-        else{
-            temp[k++]=arr[j++];
+    while(i<=mid || j<=r){
+
+        if(j>r ||  (i<=mid && a[i]<=a[j])){
+            temp[k++]=a[i++];
+        }else{
+            temp[k++]=a[j++];
         }
+
     }
 
-    while(i<=m){
-        temp[k++]=arr[i++];
+    for(int s=l;s<=r;s++){
+        a[s]=temp[s-l];
     }
-    while(j<=r){
-        temp[k++]=arr[j++];
-    }
-
-    for(int s=l;s<=r;s++)
-        arr[s]=temp[s];
 
 }
 
